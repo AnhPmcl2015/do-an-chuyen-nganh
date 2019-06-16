@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/parent-module" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/parent-module/bus-module" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/parent-module/client-module" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/parent-module/common-module" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/parent-module/dao-module" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/parent-module/service-module" charset="UTF-8" />
+  </component>
+</project>

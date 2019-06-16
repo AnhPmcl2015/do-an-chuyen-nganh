@@ -1,0 +1,17 @@
+$main-color: #4267B2;
+
+.nav-link-custom{
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+
+    &:hover{
+        cursor: pointer;
+        border: 2px solid $main-color;
+        border-radius: 10px;
+    }
+
+    span{
+        font-size: 20px;
+    }
+}
