@@ -14,32 +14,24 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class UserPrincipal implements UserDetails {
 
 	private static final long serialVersionUID = -722460910468807991L;
-	private Long id;
-	private String username;
-
+	
 	@JsonIgnore
-	private String email;
-
-	@JsonIgnore
-	private String password;
+	private AppUser user;
 
 	private Collection<? extends GrantedAuthority> authorities;
 
-	public UserPrincipal(Long id, String username, String email, String password,
+	public UserPrincipal(AppUser user,
 			Collection<? extends GrantedAuthority> authorities) {
 		super();
-		this.id = id;
-		this.username = username;
-		this.email = email;
-		this.password = password;
+		this.user = user;
 		this.authorities = authorities;
 	}
 
-	public static UserPrincipal create(User user) {
-		List<GrantedAuthority> authorities = user.getRoles().stream()
-				.map(role -> new SimpleGrantedAuthority(role.getRoleName().name()))
+	public static UserPrincipal create(AppUser user) {
+		List<GrantedAuthority> authorities = user.getAppRoles().stream()
+				.map(role -> new SimpleGrantedAuthority(role.getRoleName()))
 				.collect(Collectors.toList());
-		return new UserPrincipal(user.getId(), user.getUsername(), user.getEmail(), user.getPassword(), authorities);
+		return new UserPrincipal(user, authorities);
 	}
 
 	@Override
@@ -49,12 +41,12 @@ public class UserPrincipal implements UserDetails {
 
 	@Override
 	public String getPassword() {
-		return this.password;
+		return this.user.getUserPassword();
 	}
 
 	@Override
 	public String getUsername() {
-		return this.username;
+		return this.user.getUsername();
 	}
 
 	@Override
@@ -76,18 +68,23 @@ public class UserPrincipal implements UserDetails {
 	public boolean isEnabled() {
 		return true;
 	}
+	
 
-	public Long getId() {
-		return id;
+	public AppUser getUser() {
+		return user;
 	}
 
-	public String getEmail() {
-		return email;
+	public void setUser(AppUser user) {
+		this.user = user;
+	}
+
+	public void setAuthorities(Collection<? extends GrantedAuthority> authorities) {
+		this.authorities = authorities;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id);
+		return Objects.hash(this.user.getId());
 	}
 
 	@Override
@@ -96,7 +93,7 @@ public class UserPrincipal implements UserDetails {
 		if(obj == null || getClass() != obj.getClass()) return false;
 		
 		UserPrincipal that = (UserPrincipal) obj;
-		return Objects.equals(id, that.id);
+		return Objects.equals(this.user.getId(), that.user.getId());
 	}
 	
 }

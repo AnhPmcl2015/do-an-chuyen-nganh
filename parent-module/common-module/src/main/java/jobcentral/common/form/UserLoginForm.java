@@ -6,6 +6,8 @@ import javax.validation.constraints.NotBlank;
 
 public class UserLoginForm implements Serializable {
 
+	private static final long serialVersionUID = -3455640124461461930L;
+
 	@NotBlank
 	private String usernameOrEmail;
 

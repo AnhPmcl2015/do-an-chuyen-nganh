@@ -9,10 +9,10 @@ import org.springframework.security.core.context.SecurityContextHolder;
 
 import jobcentral.dao.entity.UserPrincipal;
 
-public class SpringSecurityAuditAwareImpl implements AuditorAware<Long>{
+public class SpringSecurityAuditAwareImpl implements AuditorAware<String>{
 
 	@Override
-	public Optional<Long> getCurrentAuditor() {
+	public Optional<String> getCurrentAuditor() {
 		
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		
@@ -22,7 +22,7 @@ public class SpringSecurityAuditAwareImpl implements AuditorAware<Long>{
 		}
 		
 		UserPrincipal userPrincipal = (UserPrincipal) authentication.getPrincipal();
-		return Optional.ofNullable(userPrincipal.getId());
+		return Optional.ofNullable(userPrincipal.getUser().getUserId());
 	}
 
 }
