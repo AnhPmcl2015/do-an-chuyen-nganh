@@ -1,2 +1,41 @@
-$main-color: #4267B2;
-$background-color: #eadede;
+
+* {
+    font-family: 'Roboto', sans-serif;
+}
+
+::-webkit-scrollbar{
+    width: 10px;
+}
+
+::-webkit-scrollbar-track{
+    background: white;
+}
+
+::-webkit-scrollbar-thumb{
+    background: #ff8c00;
+}
+
+.weak-text{
+    font-weight: 300;
+    color: #F0C0C0;
+}
+
+.orange-cover{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    display: block;
+    background-color: #ff8c00;
+    opacity: 0.75;
+}
+
+.border-bottom-orange-2{
+    border-bottom: 2px solid #ff8c00 !important;
+}
+
+.underline-orange {
+    border-bottom: 2px solid #ff8c00 !important;
+}

@@ -1,0 +1,107 @@
+header{
+    height: 320px;
+    width: 100%;
+    position: relative;
+    font-family: 'Roboto', sans-serif;
+
+    .background-image{
+        background-image: url('http://localhost:3000/images/header.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position-y: center;
+        width: 100%;
+        height: 100%;
+    }
+    
+    #white-layter{
+        background-color: white;
+        opacity: 0.4;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        top: 0;
+        display: block;
+    }
+
+    #body{
+        position: absolute;
+        z-index: 2;
+        top: 0;
+        text-align: center;
+        width: 100%;
+        height: 100%;
+        padding: 170px 20px 0px 20px !important;
+
+        #search-pane{
+            background-color: rgba($color: #000000, $alpha: 0.4);
+            padding: 15px 40px;
+            max-width: 960px;
+            text-align: left;
+            position: relative;
+            height: auto;
+            display: block;
+
+            p{
+                color: white;
+                font-weight: 300;
+                font-size: 0.9375rem;
+                margin-bottom: 5px !important;
+            }
+
+            #input-search{
+                display: inline-block;
+                height: 40px;
+                border-radius: 5px;
+                background-color: white;
+                margin-right: 10px;
+                width: 86%;
+
+                #icon-search{
+                    font-size: 25px;
+                    margin-top: 7px;
+                    margin-left: 6px;
+                    margin-right: 6px;
+                }
+
+            }
+
+            #btn-search{
+                display: inline-block;
+
+                button{
+                    position: absolute;
+                    top: 42px;
+                }
+            }
+        }
+
+    }
+
+}
+
+@media only screen and (min-width:620px) and (max-width:760px) {
+    #search-pane{
+        padding-left: 10px !important;
+    }
+}
+
+@media only screen and (max-width: 620px){
+
+    #input-search{
+        display: block !important;
+        width: 100% !important;
+        position: relative;
+    }
+    #btn-search{
+        display: block !important;
+        width: 100% !important;
+        text-align: center !important;
+        margin-top: 5px !important;
+
+        button{
+            position: relative !important;
+            top: 0 !important;
+        }
+    }
+}

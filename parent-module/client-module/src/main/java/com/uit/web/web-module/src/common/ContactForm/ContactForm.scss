@@ -1,0 +1,21 @@
+#contact-form{
+    font-family: 'Roboto', sans-serif;
+    color: white;
+    h4{
+        color: white;
+    }
+
+    .ant-row.ant-form-item{
+        margin-bottom: 5px !important;
+    }
+
+    #contact-form_email, #contact-form_content{
+        background-color: transparent !important;
+        color: white !important;
+    }
+
+    .ant-form-explain{
+        color: white;
+        font-size: 11px;
+    }
+}

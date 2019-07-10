@@ -1,0 +1,82 @@
+#login-register-form{
+    padding: 20px 40px;
+    width: 400px;
+    height: 580px;
+    overflow-y: auto;
+    background-color: white;
+    display: inline-block;
+    #login-register-form-nav {
+        a{
+            margin-right: 20px;
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: black;
+            text-align: center;
+            padding: 5px 8px;
+
+            &:hover{
+                border-bottom: 2px solid #ff8c00 !important;
+            }
+        }
+    }
+
+    #login-register-form-body{
+        margin-top: 30px;
+
+        a{
+            font-size: 12px;
+            text-align: center;
+            display: block;
+            width: 100%;
+        }
+        
+        input[type='text'].ant-input, input[type='password'].ant-input{
+            border: none !important;
+            border-bottom: 1px solid #ff8c00 !important;
+            border-radius: 0 !important;
+            padding: 0px !important;
+
+            &::placeholder{
+                font-size: 13px;
+            }
+
+            &:focus{
+                outline: none !important;
+            }
+        }
+
+        button{
+            display: block;
+            width: 100%;
+            border-radius: 0px;
+
+            &:hover{
+                color: #3dabd0;
+                border: 1px solid #3dabd0;
+            }
+        }
+
+        h4{
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: black; 
+        }
+
+        #qr-scan{
+            padding-top: 20px;
+            text-align: center;
+        }
+
+        .ant-checkbox-checked .ant-checkbox-inner{
+            background-color: #ff8c00 !important;
+            border-color: #ff8c00 !important;
+        }
+    }
+}
+
+@media only screen and (max-width: 970px){
+    #login-register-form{
+        margin-top: -6px;
+        
+    }
+}

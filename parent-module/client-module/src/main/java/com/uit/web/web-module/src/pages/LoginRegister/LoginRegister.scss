@@ -1,0 +1,35 @@
+#login-register-page{
+    background-color: #DCDCDC;
+    padding-top: 30px;
+    main{
+        margin-bottom: 80px;
+
+        #login-register-page-left{
+            text-align: right;
+        }
+
+        #login-register-page-right{
+            text-align: left;
+            display: block;
+            width: 100%;
+        }
+    }
+}
+
+@media only screen and (max-width: 970px){
+    #login-register-page{
+        main{
+    
+            #login-register-page-left{
+                text-align: center;
+            }
+            #login-register-page-right{
+                text-align: center;
+
+                #login-register-form{
+                    text-align: left;
+                }
+            }
+        }
+    }
+}

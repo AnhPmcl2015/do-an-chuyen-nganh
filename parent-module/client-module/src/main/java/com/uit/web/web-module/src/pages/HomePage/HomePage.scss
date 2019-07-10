@@ -1,0 +1,53 @@
+#home-page {
+    main {
+        font-family: 'Roboto', sans-serif;
+        #body-1 {
+            margin-bottom: 5px;
+
+            figure#banner {
+                text-align: center;
+                display: block;
+                width: 100%;
+
+                img {
+                    width: 100%;
+                }
+            }
+        }
+
+        #body-2 {
+            section {
+                margin-top: 15px;
+                margin-bottom: 5px;
+            }
+
+            .list-skills {
+                font-size: 1rem;
+                margin-right: 25px;
+                color: #3dabd0;
+            }
+
+            figure#banner {
+                display: block;
+                width: 100%;
+                text-align: right;
+
+                img {
+                    max-width: 300px;
+                    height: 350px;
+                }
+            }
+        }
+
+        #body-3 {
+            text-align: center;
+
+            margin-bottom: 20px;
+            h4 {
+                font-size: 20px;
+                width: 200px;
+                display: inline-block;
+            }
+        }
+    }
+}

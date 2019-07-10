@@ -1,0 +1,60 @@
+.login-register-panel{
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+
+    h2{
+        font-weight: 700;
+    }
+
+    p {
+        width: auto;
+        max-width: 350px;
+        display: inline-block;
+        text-align: left;
+        font-size: 1rem;
+        color: #9A7171;
+        min-height: 75px;
+    }
+    a{
+        font-size: 0.8125rem;
+    }
+
+}
+
+
+.login-register-drawer{
+    .ant-drawer-body{
+        background-color: white;
+
+        #left{
+            border-right: 1px solid #3dabd0;
+        }
+
+        #right{
+            border-left: 1px solid #3dabd0;
+        }
+    }
+}
+
+@media only screen and (max-width: 750px){
+
+    .login-register-drawer{
+
+        .ant-drawer-body{
+            #left{
+                border-right: none;
+            }
+        
+            #right{
+                border-left: none;
+                margin-top: 20px;
+            }
+        }
+
+        .ant-drawer-content-wrapper{
+            height: 400px !important;
+        }
+
+    }
+
+}
