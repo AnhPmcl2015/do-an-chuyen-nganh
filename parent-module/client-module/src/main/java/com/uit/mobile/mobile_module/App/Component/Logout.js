@@ -1,15 +1,16 @@
 import React, {Component} from 'react';
 import {StyleSheet, View, Text, Image, Alert, TouchableOpacity} from 'react-native';
+//import Login from '../Containers/Login';
 
 export default class Logout extends Component {
-
-    dangXuat = () =>{
+    
+    logout = () =>{
         
     }
 
     render() {
         return (
-            <TouchableOpacity style={styles.container} onPress={()=>this.dangXuat()}>
+            <TouchableOpacity style={styles.container} onPress={()=>this.logout()}>
                 <Image
                     style={{width: 25, height: 25, marginRight: 5}}
                     source={{
@@ -18,6 +19,7 @@ export default class Logout extends Component {
                 <Text style={{color: 'white'
                 }}>Đăng xuất</Text>
             </TouchableOpacity>
+            
         );
     }
 }

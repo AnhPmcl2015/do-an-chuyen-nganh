@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
-import { Avatar } from 'react-native-elements';
+import { Avatar } from 'react-native';
 
 export default class AvatarCustom extends Component {
     render(){

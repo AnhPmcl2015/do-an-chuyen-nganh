@@ -7,11 +7,37 @@ import {
     Button,
     TouchableHighlight,
     Image,
-    Alert
+    Alert,
+    TouchableOpacity
 } from 'react-native';
 import {Icon, Header} from 'react-native-elements';
+import Logo from '../Component/Logo';
+import Form from '../Component/Form';
+import {Actions} from 'react-native-router-flux';
 
-export default class LoginForm extends Component {
+
+export default class Login extends Component {
+    signup() {
+        Actions.signup()
+    }
+
+    render() {
+        return(
+            <View style={styles.container}>
+                <Logo/>
+                <Form type="Đăng nhập" onPress={() => this.homescreen()}/>
+                <View style={styles.signupTextCont}>
+                    <Text style={styles.sigupText}> Bạn chưa có tài khoản? </Text>
+                    <TouchableOpacity onPress={this.signup}>
+                    <Text style={styles.signupbutton}> Đăng ký ngay </Text>
+                    </TouchableOpacity>
+                </View>
+            </View>
+        )
+    }
+} 
+
+/* export default class LoginForm extends Component {
 
     constructor(props) {
         super(props);
@@ -109,15 +135,33 @@ export default class LoginForm extends Component {
             </View>
         );
     }
-}
+} */
 const styles = StyleSheet.create({
     container: {
+        backgroundColor: '#3DABD0',
         flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#DCDCDC'
+        justifyContent: "center",
+        alignItems: "center",
+        
     },
-    inputContainer: {
+    signupTextCont: {
+        flexGrow: 1,
+        alignItems: "flex-end",
+        justifyContent: "center",
+        paddingVertical: 16,
+        flexDirection: "row"
+    },
+    sigupText: {
+        color: 'rgba(255, 255, 255, 0.7)',
+        fontSize: 16
+    },
+    signupbutton: {
+        color:'#ffffff',
+        fontSize: 16,
+        fontWeight: '500'
+    },
+
+/*          inputContainer: {
         borderBottomColor: '#F5FCFF',
         backgroundColor: '#FFFFFF',
         borderRadius: 30,
@@ -168,5 +212,5 @@ const styles = StyleSheet.create({
         width: 70,
         height: 45,
         justifyContent: 'center'
-    }
-})
+    }  */
+});
