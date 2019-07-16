@@ -4,7 +4,7 @@ import jobcentral.constant.Constant;
 
 public class JwtAuthenticationResponseDto {
 	private String accessToken;
-	private String tokenType = Constant.JOBCENTRAL_TOKEN;
+	private String tokenType = Constant.TOKEN_TYPE;
 
 	public JwtAuthenticationResponseDto(String accessToken) {
 		super();

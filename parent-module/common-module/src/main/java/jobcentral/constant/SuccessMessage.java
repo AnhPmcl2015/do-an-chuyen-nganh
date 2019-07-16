@@ -1,5 +1,5 @@
 package jobcentral.constant;
 
-public final class SuccessMessage {
-
+public interface SuccessMessage {
+	String REGISTER_SUCCESSFULLY = "Đăng ký thành công";
 }

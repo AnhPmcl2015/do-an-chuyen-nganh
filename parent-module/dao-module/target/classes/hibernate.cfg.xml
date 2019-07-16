@@ -6,7 +6,7 @@
     <session-factory>
         <property name="hibernate.bytecode.use_reflection_optimizer">false</property>
         <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/jobcentral</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/topfactors</property>
         <property name="hibernate.connection.username">root</property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
         <property name="hibernate.search.autoregister_listeners">false</property>
@@ -24,6 +24,7 @@
         <mapping class="jobcentral.dao.entity.test.Nation" />
         <mapping class="jobcentral.dao.entity.test.CvWorkExperience" />
         <mapping class="jobcentral.dao.entity.test.Address" />
+        <mapping class="jobcentral.dao.entity.test.UserOtp" />
         <mapping class="jobcentral.dao.entity.test.Cv" />
         <mapping class="jobcentral.dao.entity.test.Experience" />
         <mapping class="jobcentral.dao.entity.test.CvAchievement" />

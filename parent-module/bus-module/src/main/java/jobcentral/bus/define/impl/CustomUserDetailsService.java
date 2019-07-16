@@ -1,35 +1,51 @@
 package jobcentral.bus.define.impl;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import jobcentral.dao.entity.User;
+import jobcentral.constant.ErrorMessage;
+import jobcentral.dao.entity.AppUser;
 import jobcentral.dao.entity.UserPrincipal;
+import jobcentral.dao.repository.UserRepository;
 
 @Service
-public class CustomUserDetailsService implements UserDetailsService{
+public class CustomUserDetailsService implements UserDetailsService {
 
+	@Autowired
+	private UserRepository userRepository;
 
 	@Override
 	@Transactional
-	public UserDetails loadUserByUsername(String usernameOrEmail) throws UsernameNotFoundException {
-//		User user = userRepository.findByUsernameOrEmail(usernameOrEmail, usernameOrEmail)
-//				.orElseThrow(()-> new UsernameNotFoundException("User not found with username or email: "));
-//		
-		
-		User user = null;
+	public UserDetails loadUserByUsername(String usernameOrEmailOrPhoneNumber) throws UsernameNotFoundException {
+
+		AppUser user = userRepository.findByUsernameOrEmailOrPhoneNumber(usernameOrEmailOrPhoneNumber, usernameOrEmailOrPhoneNumber, usernameOrEmailOrPhoneNumber)
+				.orElseThrow(() -> new UsernameNotFoundException(String.format(ErrorMessage.USERNAME_NOT_FOUND, usernameOrEmailOrPhoneNumber)));
+		return UserPrincipal.create(user);
+	}
+
+	@Transactional
+	public UserDetails loadUserById(String id) {
+
+		AppUser user = userRepository.findById(id)
+				.orElseThrow(()->new UsernameNotFoundException(String.format(ErrorMessage.USER_ID_NOT_FOUND, id)));
 		return UserPrincipal.create(user);
 	}
 	
 	@Transactional
-	public UserDetails loadUserById(Long id) {
-//		User user = userRepository.findById(id)
-//				.orElseThrow(()-> new UsernameNotFoundException("User not found with id "));
-		
-		User user = null;
+	public UserDetails loadUserByEmail(String email) {
+		AppUser user = userRepository.findByEmail(email)
+				.orElseThrow(()->new UsernameNotFoundException(String.format(ErrorMessage.USER_EMAIL_NOT_FOUND, email)));
+		return UserPrincipal.create(user);
+	}
+	
+	@Transactional
+	public UserDetails loadUserByPhoneNumber(String phoneNumber) {
+		AppUser user = userRepository.findByPhoneNumber(phoneNumber)
+				.orElseThrow(()->new UsernameNotFoundException(String.format(ErrorMessage.USER_PHONE_NUMBER_NOT_FOUND, phoneNumber)));
 		return UserPrincipal.create(user);
 	}
 

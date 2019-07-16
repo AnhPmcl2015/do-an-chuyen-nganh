@@ -1,10 +1,22 @@
 import React, {Component} from 'react';
 import './LoginRegisterForm.scss';
-import {Form, Input, Checkbox} from 'antd';
+import {Form, Input, Checkbox, notification, Modal} from 'antd';
 import OrangeButton from './../OrangeButton/OrangeButton';
 import {REGEX} from '../../constants/constants';
 
 class RegisterFormUserTemp extends Component {
+
+    handleModalOk = () => {
+        if (this.props.registerState.otp === document.getElementById('modal-input').value) {
+            notification.success({message: 'Đăng ký ứng viên', description: 'Đăng ký ứng viên thành công'});
+
+            this.setState({visibleModal: false});
+        } else {
+            notification.error({message: 'Đăng ký ứng viên', description: 'Mã OTP không trùng khớp. Hãy thử lại!'})
+        }
+    }
+
+    handleModalCancel = () => {}
 
     handleSubmit = (e) => {
         e.preventDefault();
@@ -14,7 +26,7 @@ class RegisterFormUserTemp extends Component {
             .form
             .validateFields((err, value) => {
                 if (!err) {
-                    console.log(value);
+                    this.props.handleSubmit(value);
                 }
             })
 
@@ -58,10 +70,19 @@ class RegisterFormUserTemp extends Component {
                             }, {
                                 whitespace: false,
                                 message: 'Tên đăng nhập không được chứa khoảng trắng'
+                            }, {
+                                pattern: REGEX.username,
+                                message: 'Tên đăng nhập bao gồm 1 chữ in hoa, 1 chữ thường và 1 chữ số'
+                            }, {
+                                min: 5,
+                                message: 'Tên đăng nhập từ 5 ~ 15 ký tự'
+                            }, {
+                                max: 15,
+                                message: 'Tên đăng nhập từ 5 ~ 15 ký tự'
                             }
                         ]
                     })(
-                        <Input placeholder="Tên đăng nhập"/>,)}
+                        <Input placeholder="Tên đăng nhập (từ 5 ~ 15 ký tự)"/>,)}
                 </Form.Item>
 
                 <Form.Item>
@@ -97,13 +118,19 @@ class RegisterFormUserTemp extends Component {
                             }
                         ]
                     })(
-                        <Input placeholder="Nhập lại mật khẩu"/>,)}
+                        <Input type='password' placeholder="Nhập lại mật khẩu"/>,)}
                 </Form.Item>
 
                 <Form.Item>
                     {getFieldDecorator('confirmTerm', {
                         valuePropName: 'checked',
-                        initialValue: false
+                        initialValue: false,
+                        rules: [
+                            {
+                                required: true,
+                                message: 'Bạn cần phải chấp nhận điều khoản sử dụng'
+                            }
+                        ]
                     })(
                         <Checkbox>Chấp nhận điều khoản sử dụng</Checkbox>
                     )}
@@ -117,6 +144,29 @@ class RegisterFormUserTemp extends Component {
                     </section>
                 </Form.Item>
 
+                <Modal
+                    id='modal-register-form'
+                    onOk={this.handleModalOk}
+                    okText='Xác nhận'
+                    cancelText='Gửi lại mã'
+                    onCancel={this.handleModalCancel}
+                    title='Xác thực mã OTP'
+                    visible={this.props.registerState.visibleModal}>
+                    <section className="container-fluid">
+                        <section className="row align-items-center">
+                            <section
+                                className="col-3"
+                                style={{
+                                textAlign: 'right'
+                            }}>
+                                Mã OTP:
+                            </section>
+                            <section className="col-9">
+                                <Input id='modal-input' placeholder='Nhập mã OTP'/>
+                            </section>
+                        </section>
+                    </section>
+                </Modal>
             </Form>
 
         );

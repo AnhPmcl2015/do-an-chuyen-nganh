@@ -1,6 +1,6 @@
 package jobcentral.constant;
 
-public enum RoleName {
-	ROLE_CANDIDATE,
-	ROLE_ADMIN
+public interface RoleName {
+	String ROLE_CANDIDATE = "ROLE_CANDIDATE";
+	String ROLE_ADMIN = "ROLE_ADMIN";
 }

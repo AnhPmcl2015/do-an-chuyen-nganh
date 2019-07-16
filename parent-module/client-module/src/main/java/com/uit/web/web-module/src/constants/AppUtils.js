@@ -1,18 +1,19 @@
-import {API_BASE_URL} from './ApiConstants';
-import {ACCESS_TOKEN, MONTH_NAME} from './contants';
+import {ACCESS_TOKEN, MONTH_NAME} from './../constants/constants';
 
-const request = (options) => {
+export const request = (options) => {
     const headers = new Headers({
         'Content-Type': 'application/json'
     });
 
-    if(localStorage.getItem(ACCESS_TOKEN)){
-        headers.append('Authorization', 'JobCentral ', localStorage.getItem(ACCESS_TOKEN));
+    if(sessionStorage.getItem(ACCESS_TOKEN)){
+        headers.append('Authorization', 'TopFactors ', sessionStorage.getItem(ACCESS_TOKEN));
     }
 
     let defaults = {headers};
     options = Object.assign({}, defaults, options);
     
+    console.log(options);
+
     return fetch(options.url, options)
         .then(res => res.json().then(json => {
             if(!res.ok){

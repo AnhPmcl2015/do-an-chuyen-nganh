@@ -3,18 +3,27 @@ package jobcentral.controller.pub;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import jobcentral.common.form.SignUpRequestForm;
+import jobcentral.bus.define.IUserService;
+import jobcentral.common.dto.ApiResponseDto;
+import jobcentral.common.dto.JwtAuthenticationResponseDto;
+import jobcentral.common.form.CandidateSignUpRequest;
+import jobcentral.common.form.RecruitmentLoginForm;
 import jobcentral.common.form.UserLoginForm;
+import jobcentral.common.utils.AppUtils;
 import jobcentral.config.security.JwtTokenProvider;
 import jobcentral.constant.ApiConstant;
+import jobcentral.constant.SuccessMessage;
 
 @RestController
 @RequestMapping(ApiConstant.AUTH_API)
@@ -23,57 +32,76 @@ public class AuthController {
 	private AuthenticationManager authenticaltionManager;
 	
 	@Autowired
-	private PasswordEncoder passwordEncoder;
-	
-	@Autowired
 	private JwtTokenProvider tokenProvider;
 	
-	@PostMapping("/signin")
+	@Autowired
+	private AppUtils appUtils;
+	
+	@Autowired
+	private IUserService userServiceImpl;
+	
+	@PostMapping("/ung-vien/dang-nhap")
 	public ResponseEntity<?> authenticateUser(@Valid @RequestBody UserLoginForm loginForm){
-//		Authentication authentication = authenticaltionManager.authenticate(
-//				new UsernamePasswordAuthenticationToken(
-//						loginForm.getUsernameOrEmail(), loginForm.getPassword())
-//		);
-//		
-//		SecurityContextHolder.getContext().setAuthentication(authentication);
-//		
-//		String jwt = tokenProvider.generateToken(authentication);
-//		
-//		return ResponseEntity.ok(new JwtAuthenticationResponseDto(jwt));
+		Authentication authentication = authenticaltionManager.authenticate(
+				new UsernamePasswordAuthenticationToken(
+						loginForm.getUsernameOrPhoneNumber(), loginForm.getPassword())
+		);
 		
-		return null;
+		SecurityContextHolder.getContext().setAuthentication(authentication);
+		
+		String jwt = tokenProvider.generateToken(authentication);
+		
+		return ResponseEntity.ok(new JwtAuthenticationResponseDto(jwt));
+
 	}
 	
-	@PostMapping("/signup")
-	public ResponseEntity<?> registerUser(@Valid @RequestBody SignUpRequestForm signUpForm){
-//		if(userRepository.existsByUsername(signUpForm.getUsername())) {
-//			return new ResponseEntity<>(new ApiResponseDto(false, "Username is already taken!"), HttpStatus.BAD_REQUEST);
+	@PostMapping("/nha-tuyen-dung/dang-nhap")
+	public ResponseEntity<?> authenticateRecruitment(@Valid @RequestBody RecruitmentLoginForm loginForm){
+		Authentication authentication = authenticaltionManager.authenticate(
+				new UsernamePasswordAuthenticationToken(
+						loginForm.getUsernameOrEmail(), loginForm.getPassword())
+		);
+		
+		SecurityContextHolder.getContext().setAuthentication(authentication);
+		
+		String jwt = tokenProvider.generateToken(authentication);
+		
+		return ResponseEntity.ok(new JwtAuthenticationResponseDto(jwt));
+	}
+	
+	/**
+	 * Dùng để đăng ký tài khoản của ứng viên
+	 * @param candidateSignUpForm
+	 * @return
+	 * 	 1. ApiResponseDto
+	 * 		* success: tình trạng (true, false)
+	 * 		* message: Lời nhắn trả về
+	 * 
+	 * 	2. HTTPResponseStatus: 
+	 * 		Status của HTTP Response
+	 */
+	@PostMapping("/ung-vien/dang-ky")
+	public ResponseEntity<?> registerUser(@Valid @RequestBody CandidateSignUpRequest candidateSignUpForm){
+		
+//		String validateErrorMessage = appUtils.validateCandidateSignUpRequest(candidateSignUpForm);
+//		
+//		if(!"".equals(validateErrorMessage)) {
+//			return new ResponseEntity<>(new ApiResponseDto(false, validateErrorMessage), HttpStatus.BAD_REQUEST);
 //		}
-//		
-//		// Creating user account
-//		User user = new User(signUpForm.getUsername(), signUpForm.getEmail(), signUpForm.getPassword());
-//		
-//		user.setPassword(passwordEncoder.encode(user.getPassword()));
-//		
-//		Role userRole = roleRepository.findByRoleName(RoleName.ROLE_USER)
-//				.orElseThrow(()->new AppException("User role not set"));
-//		
-//		user.setRoles(Collections.singleton(userRole));
-//		
-//		User user1 = new User("anh-pt2","anhpmcl@gmail.com" ,passwordEncoder.encode("123"));
-//		user1.setRoles(Collections.singleton(userRole));
-//		
-//		userRepository.saveAndFlush(user1);
-//		
-//		user.setCreatedBy(user1);
-//		
-//		User result = userRepository.saveAndFlush(user);
-//		
-//		URI location = ServletUriComponentsBuilder.fromCurrentContextPath()
-//				.path("/api/users/{username}")
-//				.buildAndExpand(result.getUsername()).toUri();
-//		
-//		return ResponseEntity.created(location).body(new ApiResponseDto(true, "User registed successful"));
+		
+		ApiResponseDto dto = userServiceImpl.registerNewCandidate(candidateSignUpForm);
+		
+		if(!dto.getSuccess()) {
+			return new ResponseEntity<>(dto, HttpStatus.BAD_REQUEST);
+		}else {
+
+			return new ResponseEntity<>(dto, HttpStatus.OK);
+		}
+
+	}
+	
+	@PostMapping("/nha-tuyen-dung/dang-ky")
+	public ResponseEntity<ApiResponseDto> registerRecruitment(){
 		return null;
 	}
 }

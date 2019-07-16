@@ -5,6 +5,7 @@ import LoginButton from './../LoginRegisterButton/LoginButton';
 import LoginRegisterDrawer from './../LoginRegisterDrawer/LoginRegisterDrawer';
 import RegisterButton from './../LoginRegisterButton/RegisterButton';
 import { Link } from 'react-router-dom';
+import { ACCESS_TOKEN } from './../../constants/constants';
 
 const LeftSideNavDrawer = (props) => {
 
@@ -53,9 +54,10 @@ const LeftSideNavDrawer = (props) => {
                                 textAlign: 'center'
                             }}><img width='150px' src="http://localhost:3000/images/logo.png" alt="logo"/></figure>
                         </section>
-                        <section className="col-6"><LoginButton onClick={() => openLoginDrawer()}/>
+                        
+                        {sessionStorage.getItem(ACCESS_TOKEN) === null && <><section className="col-6"><LoginButton onClick={() => openLoginDrawer()}/>
                         </section>
-                        <section className="col-6"><RegisterButton onClick={() => openRegisterDrawer()}/></section>
+                        <section className="col-6"><RegisterButton onClick={() => openRegisterDrawer()}/></section></>}
 
                         <Divider />
 

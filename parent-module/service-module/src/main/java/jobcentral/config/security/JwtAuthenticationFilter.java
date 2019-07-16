@@ -38,7 +38,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 			String jwt = getJwtFromRequest(request);
 			
 			if(StringUtils.hasText(jwt) && tokenProvider.validateToken(jwt)) {
-				Long userId = tokenProvider.getUserIdFromJwt(jwt);
+				String userId = tokenProvider.getUserIdFromJwt(jwt);
 				
 				UserDetails userDetails = customUserDetailsService.loadUserById(userId);
 				
@@ -58,7 +58,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 	private String getJwtFromRequest(HttpServletRequest request) {
 		String jobcentralToken = request.getHeader("Authorization");
 		
-		if(StringUtils.hasText(jobcentralToken) && jobcentralToken.startsWith(Constant.JOBCENTRAL_TOKEN + Constant.SPACE)) {
+		if(StringUtils.hasText(jobcentralToken) && jobcentralToken.startsWith(Constant.TOKEN_TYPE + Constant.SPACE)) {
 			return jobcentralToken.substring(7, jobcentralToken.length());
 		}
 		

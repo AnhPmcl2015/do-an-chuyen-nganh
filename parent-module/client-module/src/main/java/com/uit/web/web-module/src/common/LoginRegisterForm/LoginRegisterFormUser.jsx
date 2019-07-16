@@ -5,9 +5,17 @@ import {APP_LINK} from '../../constants/constants';
 import LoginFormUser from './LoginFormUser';
 import RegisterFormUser from './RegisterFormUser';
 
-const LoginRegisterFormUser = ({type}) => {
+const LoginRegisterFormUser = ({type, handleSubmitLoginRegisterUser, registerState}) => {
 
     useEffect(() => {}, [type])
+
+    const handleSubmitLoginUser = (value) => {
+        handleSubmitLoginRegisterUser(value);
+    }
+
+    const handleSubmitRegisterUser = (value) => {
+        handleSubmitLoginRegisterUser(value);
+    }
 
     return (
         <section id='login-register-form'>
@@ -25,13 +33,11 @@ const LoginRegisterFormUser = ({type}) => {
             </section>
 
             <section id="login-register-form-body">
-                {
-                    type === 'dang-nhap' && <LoginFormUser/>
-                }
+                {type === 'dang-nhap' && <LoginFormUser handleSubmit={(value) => handleSubmitLoginUser(value)}/>}
 
-                {
-                    type === 'dang-ky' && <RegisterFormUser />
-                }
+                {type === 'dang-ky' && <RegisterFormUser
+                    registerState={registerState}
+                    handleSubmit={(value) => handleSubmitRegisterUser(value)}/>}
 
             </section>
 

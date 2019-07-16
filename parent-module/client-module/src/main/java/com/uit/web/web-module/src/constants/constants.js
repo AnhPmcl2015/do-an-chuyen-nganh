@@ -1,4 +1,4 @@
-export const ACCESS_TOKEN = 'jc_token';
+export const ACCESS_TOKEN = 'tf_token';
 
 export const BASE_LINK = 'http://localhost:3000';
 
@@ -15,7 +15,8 @@ export const APP_LINK = {
 
 export const REGEX = {
     email: /^[a-z][a-z0-9_\.]{5,32}@[a-z0-9]{2,}(\.[a-z0-9]{2,4}){1,2}$/,
-    password: /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,20})/,
+    password: /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{5,20})/,
+    username: /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{5,15})/
 }
 
 export const MONTH_NAME = [

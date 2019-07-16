@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import './LoginRegisterForm.scss';
-import { Form, Input, Divider } from 'antd';
+import { Form, Input, Divider, notification } from 'antd';
 import OrangeButton from './../OrangeButton/OrangeButton';
 import { APP_LINK, REGEX } from '../../constants/constants';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { QRCode } from 'react-qr-svg';
 
 class LoginFormUserTemp extends Component {
@@ -12,7 +12,7 @@ class LoginFormUserTemp extends Component {
         e.preventDefault();
         this.props.form.validateFields((err, value) => {
             if(!err){
-                console.log(value);
+                this.props.handleSubmit(value);
             }
         })
     }
@@ -23,7 +23,7 @@ class LoginFormUserTemp extends Component {
         return (
             <Form onSubmit={this.handleSubmit}>
                 <Form.Item>
-                    {getFieldDecorator('phoneNumberOrUserName', {
+                    {getFieldDecorator('usernameOrPhoneNumber', {
                         rules: [
                             {
                                 required: true,
@@ -80,4 +80,4 @@ class LoginFormUserTemp extends Component {
 
 const LoginFormUser = Form.create({name: 'login-form'})(LoginFormUserTemp);
 
-export default LoginFormUser;
+export default withRouter(LoginFormUser);
