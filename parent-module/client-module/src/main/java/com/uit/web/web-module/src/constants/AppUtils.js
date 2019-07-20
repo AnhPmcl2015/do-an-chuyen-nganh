@@ -23,7 +23,8 @@ export const request = (options) => {
             return json;
         }));
 }
-    
+
+
 export const formatDate = (dateString) => {
     let date = new Date(dateString);
     let monthIndex = date.getMonth();

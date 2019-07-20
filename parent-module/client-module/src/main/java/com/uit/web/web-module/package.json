@@ -14,8 +14,11 @@
         "react-router": "^5.0.1",
         "react-router-dom": "^5.0.0",
         "react-scripts": "3.0.0",
+        "react-stomp": "^4.1.1",
+        "react-websocket": "^2.0.1",
         "reactstrap": "^8.0.0",
-        "redux": "^4.0.2"
+        "redux": "^4.0.2",
+        "sockjs": "^0.3.19"
     },
     "scripts": {
         "start": "react-scripts start",

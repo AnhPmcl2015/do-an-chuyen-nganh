@@ -1,4 +1,5 @@
 export const API_BASE_URL = 'http://localhost:8080';
+export const SOCKET_PREFIX = '/topfactors';
 
 export const API_PUBLIC_URL = {
     loginCandidate: '/api/auth/ung-vien/dang-nhap',
