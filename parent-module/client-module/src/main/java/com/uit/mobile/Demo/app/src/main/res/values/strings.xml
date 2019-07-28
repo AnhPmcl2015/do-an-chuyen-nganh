@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">Demo</string>
+    <string name="Username">Số điện thoại</string>
+    <string name="Password">Mật khẩu</string>
+    <string name="Confirm_Password">Nhập lại mật khẩu </string>
+    <string name="Login">Đăng nhập</string>
+    <string name="not_register">Bạn chưa có tài khoản?</string>
+    <string name="Register">Đăng ký ngay</string>
+    <string name="Already_Register">Bạn đã có tài khoản?</string>
+    <string name="login">Đăng nhập</string>
+    <string name="register">Đăng ký</string>
+    <string name="title_activity_main">Bảng tin</string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+    <string name="nav_header_title">Welcome to TopFactors</string>
+
+    <string name="menu_home">Bảng tin</string>
+    <string name="menu_gallery">Danh sách CV</string>
+    <string name="menu_slideshow">Đánh giá và Nhận xét</string>
+    <string name="menu_tools">Báo cáo</string>
+    <string name="menu_share">Đăng xuất</string>
+    <string name="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</string>
+
+
+</resources>
