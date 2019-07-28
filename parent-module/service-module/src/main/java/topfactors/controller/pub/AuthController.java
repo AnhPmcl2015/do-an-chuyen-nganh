@@ -14,11 +14,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import topfactors.bus.define.ILoginHistoryService;
 import topfactors.bus.define.IUserService;
 import topfactors.common.dto.ApiResponseDto;
 import topfactors.common.dto.JwtAuthenticationResponseDto;
 import topfactors.common.form.CandidateSignUpRequest;
 import topfactors.common.form.RecruitmentLoginForm;
+import topfactors.common.form.RecruitmentSignUpRequest;
 import topfactors.common.form.UserLoginForm;
 import topfactors.common.utils.AppUtils;
 import topfactors.config.security.JwtTokenProvider;
@@ -39,8 +41,12 @@ public class AuthController {
 	@Autowired
 	private IUserService userServiceImpl;
 	
+	@Autowired
+	private ILoginHistoryService loginHistoryService;
+	
 	@PostMapping("/ung-vien/dang-nhap")
 	public ResponseEntity<?> authenticateUser(@Valid @RequestBody UserLoginForm loginForm){
+		
 		Authentication authentication = authenticaltionManager.authenticate(
 				new UsernamePasswordAuthenticationToken(
 						loginForm.getUsernameOrPhoneNumber(), loginForm.getPassword())
@@ -49,6 +55,8 @@ public class AuthController {
 		SecurityContextHolder.getContext().setAuthentication(authentication);
 		
 		String jwt = tokenProvider.generateToken(authentication);
+		
+		this.loginHistoryService.insertOrUpdate(loginForm.getUsernameOrPhoneNumber(), jwt);
 		
 		return ResponseEntity.ok(new JwtAuthenticationResponseDto(jwt));
 
@@ -99,8 +107,27 @@ public class AuthController {
 
 	}
 	
+	/**
+	 * Dùng để đăng ký tài khoản của nhà tuyển dụng
+	 * @param form
+	 * @return
+	 * 
+	 * 	 1. ApiResponseDto
+	 * 		* success: tình trạng (true, false)
+	 * 		* message: Lời nhắn trả về
+	 * 
+	 * 	2. HTTPResponseStatus: 
+	 * 		Status của HTTP Response
+	 */
 	@PostMapping("/nha-tuyen-dung/dang-ky")
-	public ResponseEntity<ApiResponseDto> registerRecruitment(){
-		return null;
+	public ResponseEntity<ApiResponseDto> registerRecruitment(@Valid @RequestBody RecruitmentSignUpRequest form){
+		
+		ApiResponseDto dto = userServiceImpl.registerNewRecruitment(form);
+		
+		if(!dto.getSuccess()) {
+			return new ResponseEntity<ApiResponseDto>(dto, HttpStatus.BAD_REQUEST);
+		}else {
+			return new ResponseEntity<ApiResponseDto>(dto, HttpStatus.OK);
+		}
 	}
 }

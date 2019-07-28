@@ -1,13 +1,13 @@
 import React, {useState} from 'react'
 import './Navigation.scss'
-import {Button, Icon} from 'antd';
 import LoginRegisterDrawer from './../LoginRegisterDrawer/LoginRegisterDrawer';
 import RegisterButton from './../LoginRegisterButton/RegisterButton';
 import LoginButton from './../LoginRegisterButton/LoginButton';
 import OrangeBadge from './../OrangeBadge/OrangeBadge';
-import {ACCESS_TOKEN} from './../../constants/constants';
+import {ACCESS_TOKEN, BASE_LINK, SPLASH, APP_LINK} from './../../constants/constants';
+import { IMAGE_CONST } from './../../constants/StaticConstants';
 
-function Navigation() {
+function Navigation({blueBackground = false}) {
 
     const [typeDrawer,
         setTypeDrawer] = useState('dang-nhap');
@@ -29,15 +29,16 @@ function Navigation() {
     }
 
     return (
-        <nav id='nav' className="navbar navbar-expand-lg navbar-light bg-light">
+        <nav id='nav' className={`navbar navbar-expand-lg navbar-light bg-light ${blueBackground && 'nav-blue-background'}`}>
             <LoginRegisterDrawer
                 type={typeDrawer}
                 close={closeLoginRegisterDrawer}
                 visible={visibleDrawer}/>
 
-            <a className="navbar-brand" href="http://localhost:3000/">
+            <a className="navbar-brand" href={BASE_LINK + SPLASH}>
                 <figure>
-                    <img id='logo' src='http://localhost:3000/images/logo.png' alt='logo'/>
+                    {!blueBackground && <img id='logo' src={IMAGE_CONST.logo} alt='logo'/>}
+                    {blueBackground && <img id='logo' src={IMAGE_CONST.logoFullWhite} alt='logo'/>}
                 </figure>
             </a>
             <ul className="navbar-nav mr-auto">
@@ -45,7 +46,7 @@ function Navigation() {
                     <a className="nav-link" href="#">CV</a>
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link" href="#">Việc làm</a>
+                    <a className="nav-link" href={APP_LINK.listJobs}>Việc làm</a>
                 </li>
                 <li className="nav-item">
                     <a className="nav-link" href="#">Công ty</a>

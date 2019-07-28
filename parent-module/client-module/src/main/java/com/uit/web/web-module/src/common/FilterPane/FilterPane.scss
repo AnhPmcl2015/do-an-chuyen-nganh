@@ -1,0 +1,34 @@
+.filter-pane{
+    margin-top: 10px;
+    padding-left: 10px;
+    .filter-pane-title{
+        font-weight: 700;
+
+        &:hover{
+            cursor: pointer;
+        }
+
+        i{
+            vertical-align: 0.125rem !important;
+            margin-right: 3px;
+        }
+
+        .ant-checkbox.ant-checkbox-checked {
+            .ant-checkbox-inner{
+                background-color: #ff8c00 !important;
+                border-color: #ff8c00 !important;
+            }
+        }
+
+    }
+
+    .filter-pane-options {
+        margin-left: 20px;
+    }
+}
+
+@media only screen and (max-width: 550px) {
+    .filter-pane{
+        display: none;
+    }
+}

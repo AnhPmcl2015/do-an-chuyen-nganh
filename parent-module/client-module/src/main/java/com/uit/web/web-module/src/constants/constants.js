@@ -1,6 +1,7 @@
 export const ACCESS_TOKEN = 'tf_token';
 
 export const BASE_LINK = 'http://localhost:3000';
+export const SPLASH = '/';
 
 export const APP_LINK = {
     homePage: [
@@ -10,7 +11,10 @@ export const APP_LINK = {
     authRecruitment: '/auth/nha-tuyen-dung/',
     searchCompany: '/tim-kiem/cong-ty/',
     forgotPasswordUser: '/auth/quen-mat-khau/ung-vien',
-    forgotPasswordRecruitment: '/auth/quen-mat-khau/nha-tuyen-dung'
+    forgotPasswordRecruitment: '/auth/quen-mat-khau/nha-tuyen-dung',
+    listJobs: '/danh-sach-cong-viec',
+    jobDetail: '/thong-tin-cong-viec?id=',
+    processEvalution: '/danh-gia-nang-luc/:id/:session'
 }
 
 export const REGEX = {

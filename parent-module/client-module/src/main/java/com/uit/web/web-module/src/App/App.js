@@ -5,6 +5,8 @@ import {APP_LINK} from '../constants/constants';
 import './style.scss';
 import LoginRegisterUser from './../pages/LoginRegister/LoginRegisterUser';
 import LoginRegisterRecruitment from './../pages/LoginRegister/LoginRegisterRecruitment';
+import ListJobs from './../pages/ListJobs/ListJobs';
+import ProcessEvalution from './../pages/ProcessEvalution/ProcessEvalution';
 
 
 function App() {
@@ -15,6 +17,8 @@ function App() {
                 <Route
                     path={APP_LINK.authRecruitment + ':type'}
                     component={LoginRegisterRecruitment}/>
+                <Route path={APP_LINK.listJobs} component={ListJobs}/>
+                <Route path={APP_LINK.processEvalution} component={ProcessEvalution}/>
         </Router>
     );
 }

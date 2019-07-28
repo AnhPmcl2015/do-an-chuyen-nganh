@@ -10,11 +10,13 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import topfactors.common.base.DateAudit;
+
 @Entity
 @Table(name = "address", catalog = "topfactors")
-public class Address implements java.io.Serializable {
+public class Address extends DateAudit {
 
-	private static final long serialVersionUID = -1749434226387838359L;
+	private static final long serialVersionUID = 2892915312951759724L;
 	private Long id;
 	private AccountVerificationQueue accountVerificationQueue;
 	private AppUser appUser;

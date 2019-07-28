@@ -1,0 +1,21 @@
+.job-pane{
+    border: 1px solid #DCDCDC;
+    border-radius: 5px;
+    padding: 10px 10px;
+    position: relative;
+    margin-bottom: 10px;
+
+    img{
+        margin-top: 10px;
+        width: 120px;
+    }
+
+    a{
+        font-weight: 700;
+    }
+
+    .fas{
+        margin-right: 10px !important;
+        font-size: 1.25rem;
+    }
+}

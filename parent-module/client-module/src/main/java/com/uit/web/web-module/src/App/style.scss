@@ -39,3 +39,36 @@
 .underline-orange {
     border-bottom: 2px solid #ff8c00 !important;
 }
+
+#nav.nav-blue-background{
+    background-color: #3dabd0 !important;
+    a{
+        color: white !important;
+
+        &:hover{
+            border-bottom: 1px solid white;
+        }
+    }
+}
+
+.display-none {
+    display: none !important;
+}
+
+.title{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.text-ff8c00{
+    color: #ff8c00;
+}
+
+.text-3dabd0{
+    color: #3dabd0;
+}
+
+.font-weight-700{
+    font-weight: 700;
+}

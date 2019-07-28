@@ -6,8 +6,10 @@ import javax.annotation.PostConstruct;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication(scanBasePackages = "topfactors")
+@EnableScheduling
 public class Application {
 	
 	public static void main(String[] args) {
@@ -16,7 +18,7 @@ public class Application {
 	
 	@PostConstruct
 	void init() {
-		TimeZone.setDefault(TimeZone.getTimeZone("Asia/Ho_Chi_Minh"));
+		TimeZone.setDefault(TimeZone.getTimeZone("UTC"));
 	}
 	
 }

@@ -74,7 +74,7 @@ class RegisterFormRecruitmentTemp extends Component {
                         rules: [
                             {
                                 required: true,
-                                message: 'Vui lòng nhập Họ và Tên'
+                                message: 'Vui lòng nhập địa chỉ email'
                             }, {
                                 pattern: REGEX.email,
                                 message: 'Định dạng email không đúng'

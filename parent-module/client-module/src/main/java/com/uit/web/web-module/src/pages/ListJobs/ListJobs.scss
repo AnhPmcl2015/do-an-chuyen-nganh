@@ -1,0 +1,58 @@
+#list-jobs-page{
+    min-height: 500px;
+    #search-pane{
+        background-color: #DCDCDC;
+        width: 100%;
+        padding: 20px;
+        border-radius: 5px;
+
+        #input-pane{
+            display: inline-block;
+            background-color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            margin-right: 10px;
+            min-width: 400px;
+
+            i{
+                font-size: 1.25rem;
+                margin-right: 10px;
+            }
+        }
+
+        #button-search{
+            display: inline-block;
+        }
+    }
+
+    #filter-panes{
+        border-right: 1px solid #DCDCDC;
+
+        h4{
+            border-radius: 5px;
+            padding: 10px;
+            font-weight: 700;
+            background-color: #DCDCDC;
+            margin-bottom: 15px;
+        }
+    }
+}
+
+@media only screen and (max-width: 575px){
+    #list-jobs-page{
+        #search-pane{
+            #input-pane{
+                display: block;
+                width: 100%;
+            }
+        }
+
+        #button-search{
+            margin-top: 10px;
+            text-align: center;
+            display: block;
+            width: 100%;
+            min-width: auto;
+        }
+    }
+}

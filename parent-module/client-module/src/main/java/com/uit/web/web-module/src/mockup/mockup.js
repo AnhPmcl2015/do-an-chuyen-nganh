@@ -1,6 +1,44 @@
+import { IMAGE_CONST } from './../constants/StaticConstants';
+
 export const TAGS_MOCKUP = ['Java Developer', 'Senior Java Dev']
 
+
 export const AUTO_COMPLETE_MOCKUP = ['Java Developer', 'Senior Java Dev', 'Boash'];
+
+export const FILTER_PANE = [
+    {
+        value: 'Java Dev',
+        text: 'Java Dev'
+    }, {
+        value: '.NET Dev',
+        text: '.NET Dev'
+    }
+];
+
+export const JOB_PANE = [
+    {
+        icon: IMAGE_CONST.fujinetLogo,
+        companyName: 'Fujinet Systems JSC',
+        idJob: '123456',
+        title: 'Java Developer',
+        summary: 'Fujinet Systems JSC (Fujinet) là công ty phát triển phần mềm cho thị trường Nhật Bản hàng đầu tại Việt Nam, với gần 800 kỹ sư đang làm việc tại Việt Nam và 50 kỹ sư onsite tại Fujinet Japan Nhật Bản',
+        salary: '10-15 triệu',
+        expirationDate: '01/08/2019',
+        location: 'Tân Bình TPHCM',
+        time: 'Cập nhật 15p trước'
+    },
+    {
+        icon: IMAGE_CONST.fujinetLogo,
+        companyName: 'Fujinet Systems JSC',
+        idJob: '123456',
+        title: 'Java Developer',
+        summary: 'Fujinet Systems JSC (Fujinet) là công ty phát triển phần mềm cho thị trường Nhật Bản hàng đầu tại Việt Nam, với gần 800 kỹ sư đang làm việc tại Việt Nam và 50 kỹ sư onsite tại Fujinet Japan Nhật Bản',
+        salary: '10-15 triệu',
+        expirationDate: '01/08/2019',
+        location: 'Tân Bình TPHCM',
+        time: 'Cập nhật 15p trước'
+    },
+];
 
 export const CONG_TY_TUYEN_DUNG = [
     {

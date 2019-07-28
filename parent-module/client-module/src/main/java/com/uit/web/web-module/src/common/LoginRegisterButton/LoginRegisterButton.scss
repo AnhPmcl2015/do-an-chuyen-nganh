@@ -28,3 +28,22 @@ button#btn-dang-nhap{
         margin-right: 5px;
     }
 }
+
+.nav-blue-background{
+    button#btn-dang-nhap{
+        color: white;
+        background: #3dabd0;
+    }
+
+    button#btn-dang-ky{
+        color: white;
+        background-color: #3dabd0;
+        border: 2px solid white;
+        
+        &:hover{
+            background-color: white;
+            color: #3dabd0;
+        }
+    }   
+    
+}

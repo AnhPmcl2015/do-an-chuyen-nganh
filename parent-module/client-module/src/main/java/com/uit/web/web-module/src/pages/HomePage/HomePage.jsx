@@ -1,18 +1,18 @@
 import React, {useState} from 'react';
 import './HomePage.scss';
-import MainNavigation from './../../common/MainNavigatation/MainNavigation';
 import Header from './../../common/Header/Header';
 import Footer from './../../common/Footer/Footer';
 import {DANH_SACH_KY_NANG} from '../../mockup/mockup';
 import {Link} from 'react-router-dom';
 import {Icon} from 'antd';
+import MainNavigation from './../../common/Navigation/MainNavigation';
 
 function HomePage() {
 
     return (
         <section id='home-page'>
 
-            <MainNavigation/>
+            <MainNavigation blueBackground={false}/>
             <Header/>
 
             <main className="container">

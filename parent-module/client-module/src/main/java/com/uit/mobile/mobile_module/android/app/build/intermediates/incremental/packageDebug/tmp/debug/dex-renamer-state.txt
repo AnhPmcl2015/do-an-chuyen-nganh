@@ -1,0 +1,4 @@
+#Wed May 01 20:36:33 ICT 2019
+base.0=D\:\\GitHub\\do-an-chuyen-nganh\\parent-module\\client-module\\src\\main\\java\\com\\uit\\mobile\\mobile_module\\android\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0
+path.0=classes.dex
+renamed.0=classes.dex

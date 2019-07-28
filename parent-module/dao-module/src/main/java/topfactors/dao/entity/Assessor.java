@@ -1,4 +1,5 @@
 package topfactors.dao.entity;
+// Generated Jul 20, 2019 10:58:06 PM by Hibernate Tools 4.3.1.Final
 
 import java.util.HashSet;
 import java.util.Set;
@@ -8,10 +9,14 @@ import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import topfactors.common.base.DateAudit;
+
 @Entity
 @Table(name = "assessor", catalog = "topfactors")
-public class Assessor implements java.io.Serializable {
-	private static final long serialVersionUID = 6930274815106933915L;
+public class Assessor extends DateAudit{
+
+	private static final long serialVersionUID = 1011938301282391166L;
 	private long id;
 	private String fullname;
 	private String email;

@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import './LoginRegister.scss';
 import Footer from './../../common/Footer/Footer';
 import LeftPaneLoginRegister from '../../common/LeftPaneLoginRegister/LeftPaneLoginRegister';
@@ -9,7 +9,6 @@ import { ACCESS_TOKEN } from './../../constants/constants';
 import ErrorMessage from './../../constants/ErrorMessage';
 import { notification } from 'antd';
 import { withRouter } from 'react-router-dom';
-import { API_BASE_URL, SOCKET_PREFIX } from './../../constants/ApiConstants';
 
 
 const LoginRegisterUser = ({match, history}) => {
@@ -18,31 +17,7 @@ const LoginRegisterUser = ({match, history}) => {
         otpCode: '',
         visibleModal: false
      });
-     
-     const [socket, setSocket] = useState({
-         sock: null,
-         message: ''
-     })
-
-
-     useEffect(() => {
-        if(socket.sock == null){
-            var sock = new SockJS(API_BASE_URL + SOCKET_PREFIX);
-            sock.onopen = function() {
-                console.log('open connection');
-                sock.send('test');
-            };
-           
-            sock.onmessage = function(e) {
-                console.log('message', e.data);
-                sock.close();
-            };
-           
-            sock.onclose = function() {
-                console.log('close');
-            };
-        }
-     }, [socket]);
+    
 
     const handleSubmitLoginRegisterUser = (value) => {
         if (match.params.type === 'dang-nhap') {

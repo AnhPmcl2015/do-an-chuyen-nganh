@@ -3,19 +3,55 @@ footer {
     font-family: 'Roboto', sans-serif;
     padding: 25px 40px 40px 40px !important;
 
-    section{
+    figure{
+        img{
+            width: 200px;
+        }
+    }
+
+    section#copyright{
         margin-top: 15px;
-        .link-footer {
-            h4{
-                color: white;
-            }
-    
-            a{
-                color: white;
-                line-height: 2;
+        color: rgba($color: #fff, $alpha: 0.6)
+    }
+
+    section#social{
+        margin-top: 15px;
+        margin-bottom: 15px;
+        i{
+            color: white;
+            font-size: 2.4rem;
+            transition: 0.5;
+
+            &:hover{
+                cursor: pointer;
+                font-size: 2.5rem;
             }
         }
     }
 
+    section#footer-nav{
+        margin-top: 15px;
+        a, span{
+            color: white;
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        a:hover{
+            color: white !important;
+            border-bottom: 1px solid white !important;
+        }
+    }
+
+    .link-footer {
+        h4{
+            color: white;
+        }
+
+        a{
+            color: white;
+            line-height: 2;
+        }
+    }
 
 }
