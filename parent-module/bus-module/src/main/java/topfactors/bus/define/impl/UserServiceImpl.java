@@ -79,7 +79,7 @@ public class UserServiceImpl implements IUserService, IBaseDao<AppUser> {
 
 		userOtpServiceImpl.insertOrUpdate(userOtp, false);
 
-		return new ApiResponseDto(true, otp);
+		return new ApiResponseDto(true, "");
 	}
 
 	/**
@@ -188,6 +188,24 @@ public class UserServiceImpl implements IUserService, IBaseDao<AppUser> {
 				String.format(Constant.RECRUITMENT_CONFIRM_REGISTRATION, appUser.getId(), otp));
 
 		return new ApiResponseDto(true, String.format("Vui lòng xác nhận đăng ký tại địa chỉ email: %s", form.getEmail()));
+	}
+
+	/**
+	 * Bật flag người dùng lên để có tài khoản đó được active
+	 */
+	@Override
+	public boolean enableAccount(String username, String accessCode) {
+		AppUser appUser = this.userRepository.findByUsernameAndIsDeletedFalse(username).orElseThrow(() -> new BadRequestException(ErrorMessage.USERNAME_IS_EXISTED));
+		
+		UserOtp userOtp = this.userOtpServiceImpl.findByAppUserAndOtpAndIsEnableTrue(appUser, accessCode);
+		
+		if(userOtp != null) {
+			this.userOtpServiceImpl.insertOrUpdate(userOtp, true);
+			this.insertOrUpdate(appUser, true);
+			return true;
+		}
+		
+		return false;
 	}
 
 }

@@ -16,6 +16,7 @@ public interface UserRepository extends JpaRepository<AppUser, String>{
 	Optional<AppUser> findByEmailOrUsername(String email, String username);
 	Optional<AppUser> findByEmail(String email);
 	Optional<AppUser> findByUsername(String username);
+	Optional<AppUser> findByUsernameAndIsDeletedFalse(String username);
 	boolean existsByPhoneNumberAndUsername(String phoneNumber, String username);
 	boolean existsByUsernameOrEmail(String username, String email);
 	boolean existsByUsernameOrPhoneNumber(String username, String phoneNumber);
@@ -24,4 +25,5 @@ public interface UserRepository extends JpaRepository<AppUser, String>{
 	boolean existsByEmail(String email);
 	long countByIsDeletedFalse();
 	Optional<AppUser> findByUsernameOrEmailOrPhoneNumber(String username, String email, String phoneNumber);
+	Optional<AppUser> findByUsernameOrEmailOrPhoneNumberAndIsDeletedFalseAndIsEnableTrue(String username, String email, String phoneNumber);
 }

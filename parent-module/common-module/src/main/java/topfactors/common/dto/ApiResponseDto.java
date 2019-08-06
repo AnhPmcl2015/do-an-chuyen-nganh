@@ -4,6 +4,12 @@ public class ApiResponseDto {
 	private Boolean success;
 	private String message;
 
+	
+	
+	public ApiResponseDto() {
+		super();
+	}
+
 	public ApiResponseDto(Boolean success, String message) {
 		super();
 		this.success = success;

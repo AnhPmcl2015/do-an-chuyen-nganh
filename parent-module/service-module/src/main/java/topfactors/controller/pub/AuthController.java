@@ -10,6 +10,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,14 +22,20 @@ import topfactors.common.dto.JwtAuthenticationResponseDto;
 import topfactors.common.form.CandidateSignUpRequest;
 import topfactors.common.form.RecruitmentLoginForm;
 import topfactors.common.form.RecruitmentSignUpRequest;
+import topfactors.common.form.SignUpAccessCodeForm;
 import topfactors.common.form.UserLoginForm;
 import topfactors.common.utils.AppUtils;
 import topfactors.config.security.JwtTokenProvider;
 import topfactors.constant.ApiConstant;
+import topfactors.constant.ErrorMessage;
+import topfactors.constant.SuccessMessage;
+import topfactors.dao.repository.UserRepository;
 
 @RestController
 @RequestMapping(ApiConstant.AUTH_API)
 public class AuthController {
+	
+	
 	@Autowired
 	private AuthenticationManager authenticaltionManager;
 	
@@ -129,5 +136,38 @@ public class AuthController {
 		}else {
 			return new ResponseEntity<ApiResponseDto>(dto, HttpStatus.OK);
 		}
+	}
+	
+	/**
+	 * Dùng để validate khi người dùng đăng ký tài khoản
+	 * @param form
+	 * @return
+	 * 	1. ApiResponseDto
+	 * 		* success: tình trạng (true, false)
+	 * 		* message: Lời nhắn trả về
+	 * 
+	 * 	2. HTTPResponseStatus: 
+	 * 		Status của HTTP Response
+	 */
+	@PutMapping("/dang-ky/access-code")
+	public ResponseEntity<ApiResponseDto> validateAccessCode(@Valid @RequestBody SignUpAccessCodeForm form){
+		ApiResponseDto dto = new ApiResponseDto();
+		
+		boolean resp = this.userServiceImpl.enableAccount(form.getUsername(), form.getAccessCode());
+		
+		if(resp) {
+			dto.setSuccess(true);
+			dto.setMessage(SuccessMessage.REGISTER_SUCCESSFULLY);
+		}else {
+			dto.setSuccess(false);
+			dto.setMessage(ErrorMessage.REGISTER_UNSUCCESSFULLY);
+		}
+		
+		if(!dto.getSuccess()) {
+			return new ResponseEntity<ApiResponseDto>(dto, HttpStatus.BAD_REQUEST);
+		}else {
+			return new ResponseEntity<ApiResponseDto>(dto, HttpStatus.OK);
+		}
+		
 	}
 }
