@@ -4,6 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import topfactors.bus.define.IUserOtpService;
+import topfactors.common.exception.BadRequestException;
+import topfactors.constant.ErrorMessage;
+import topfactors.dao.entity.AppUser;
 import topfactors.dao.entity.UserOtp;
 import topfactors.dao.repository.UserOtpRepository;
 
@@ -23,9 +26,12 @@ public class UserOptServiceImpl implements IUserOtpService{
 	public void insertOrUpdate(UserOtp t, boolean updateOnly) {
 		if(!updateOnly) {
 			t.setIsEnable(true);
+			t.setCreatedBy(t.getAppUser().getId());
+		}else {
+			t.setIsEnable(false);
+			t.setUpdatedBy(t.getAppUser().getId());
 		}
 		
-		t.setCreatedBy(t.getAppUser().getId());
 		userOtpRepository.saveAndFlush(t);
 	}
 
@@ -51,6 +57,16 @@ public class UserOptServiceImpl implements IUserOtpService{
 	public void deleteAllOtpByUserId(String userId) {
 		userOtpRepository.deleteUserOtpByUserId(userId);
 		
+	}
+
+	/**
+	 * Lấy
+	 */
+	@Override
+	public UserOtp findByAppUserAndOtpAndIsEnableTrue(AppUser appUser, String otp) {
+		
+		return this.userOtpRepository.findByAppUserAndOtpAndIsEnableTrue(appUser, otp)
+				.orElseThrow(()->new BadRequestException(ErrorMessage.OTP_NOT_FOUND));
 	}
 
 }

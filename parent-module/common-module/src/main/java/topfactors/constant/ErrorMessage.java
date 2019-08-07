@@ -8,6 +8,8 @@ public interface ErrorMessage {
 	String USER_EMAIL_NOT_FOUND = "Không tìm thấy người dùng với email: %s";
 	String USER_PHONE_NUMBER_NOT_FOUND = "Không tìm thấy người dùng với số điện thoại: %s";
 	String USERNAME_PHONENUMBER_EMAIL_NOT_FOUND = "Không có dữ liệu của username, số điện thoại và email: %s";
+	String USER_NOT_FOUND = "Không tìm thấy dữ liệu người dùng";
+	String OTP_NOT_FOUND = "Không tìm thấy mã OTP tương ứng";
 	
 	// Lỗi dữ liệu đã tồn tại
 	String PHONE_NUMBER_IS_EXISTED = "Số điện thoại đã được sử dụng: %s";
@@ -30,4 +32,5 @@ public interface ErrorMessage {
 	// Các lỗi khác
 	String PAGE_NUMBER_LESS_THAN_0 = "Số thự tự trang không thể dưới 0";
 	String PAGE_SIZE_GREATER_THAN = "Số lượng bài viết không thể vượt quá %d";
+	String REGISTER_UNSUCCESSFULLY = "Đăng ký không thành công";
 }

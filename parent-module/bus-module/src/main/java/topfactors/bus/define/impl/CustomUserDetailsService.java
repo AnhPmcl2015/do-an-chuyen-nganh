@@ -22,7 +22,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 	@Transactional
 	public UserDetails loadUserByUsername(String usernameOrEmailOrPhoneNumber) throws UsernameNotFoundException {
 
-		AppUser user = userRepository.findByUsernameOrEmailOrPhoneNumber(usernameOrEmailOrPhoneNumber, usernameOrEmailOrPhoneNumber, usernameOrEmailOrPhoneNumber)
+		AppUser user = userRepository.findByUsernameOrEmailOrPhoneNumberAndIsDeletedFalseAndIsEnableTrue(usernameOrEmailOrPhoneNumber, usernameOrEmailOrPhoneNumber, usernameOrEmailOrPhoneNumber)
 				.orElseThrow(() -> new UsernameNotFoundException(String.format(ErrorMessage.USERNAME_NOT_FOUND, usernameOrEmailOrPhoneNumber)));
 		return UserPrincipal.create(user);
 	}

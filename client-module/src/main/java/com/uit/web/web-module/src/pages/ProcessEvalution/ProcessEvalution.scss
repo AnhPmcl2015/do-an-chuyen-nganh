@@ -1,0 +1,38 @@
+#process-evalution-page{
+    .ant-collapse-item.ant-collapse-item-active{
+        .ant-collapse-header{
+            background-color: #3dabd0;
+            color: white;
+        }
+    }
+
+    #evalution-details{
+        border: 1px solid #DADADA;
+        margin-bottom: 15px;
+        padding-bottom: 15px;
+
+        .evalution-detail-close-btn{
+            font-size: 1.25rem;
+            margin-left: 4px;
+
+            &:hover{
+                cursor: pointer;
+            }
+        }
+
+        .sub-skills{
+            margin-top: 10px;
+            margin-left: 30px;
+        }
+
+        
+    }
+
+    .btn-skill{
+        margin-top: 10px;
+        width: 100%;
+        text-align: center;
+
+    }
+    
+}

@@ -9,4 +9,5 @@ public interface IUserService {
 	ApiResponseDto registerNewCandidate(CandidateSignUpRequest form);
 	ApiResponseDto registerNewRecruitment(RecruitmentSignUpRequest form);
 	AppUser findByUsernameOrPhoneNumberOrEmail(String usernameOrPhoneNumberOrEmail);
+	boolean enableAccount(String username, String accessCode);
 }

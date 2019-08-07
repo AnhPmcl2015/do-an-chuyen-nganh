@@ -1,0 +1,30 @@
+.evalution-form{
+    padding: 0px 10px;
+    margin-bottom: 15px;
+    .evalution-form-label{
+        font-size: 16px;
+        color: #3dabd0;
+    }
+
+    .evalution-form-input, .ck-editor{
+        margin-left: 15px !important;
+        width: 100%;
+    }
+
+    .ck-editor__main, .ck-content{
+        min-height: 150px !important;
+        margin-bottom: 24px !important;
+    }
+
+    input{
+        &::-webkit-input-placeholder{
+            color: black;
+        }
+    }
+
+    textarea.ant-input.evalution-form-input.ant-input-disabled{
+        color: black !important;
+        height: 100px;
+        margin-bottom: 15px;
+    }
+}
