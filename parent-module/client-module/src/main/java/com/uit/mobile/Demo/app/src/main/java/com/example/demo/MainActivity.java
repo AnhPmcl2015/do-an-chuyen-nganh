@@ -49,6 +49,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         listfr = new ArrayList<Fragment>();
         listfr.add(new FragmentMain());
         listfr.add(new CVFragment());
+        listfr.add(new EvaluationFragment());
 
 
         android.support.v4.app.FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
@@ -101,16 +102,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         //check
         if (id == R.id.nav_main) {
 
-            if(MainActivity.this.getTitle().toString().equals("CV")) {
+            //if(MainActivity.this.getTitle().toString().equals("CV")) {
                 ft.replace(R.id.fragment_container, listfr.get(0)).addToBackStack("mainfrag");
                 ft.commit();
-            }
+            //}
         } else if (id == R.id.nav_cv) {
             //load fragment CV
             ft.replace(R.id.fragment_container, listfr.get(1)).addToBackStack("");
             ft.commit();
         } else if (id == R.id.nav_evaluation) {
-
+            ft.replace(R.id.fragment_container, listfr.get(2)).addToBackStack("");
+            ft.commit();
         } else if (id == R.id.nav_report) {
 
         } else if (id == R.id.nav_share) {
