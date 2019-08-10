@@ -5,7 +5,10 @@
     android:layout_height="match_parent"
     android:background="#e0e0e0"
     android:orientation="horizontal">
-
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:scrollbars="vertical">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -83,10 +86,89 @@
             android:textColor="#000"
             android:textSize="15sp"
             />
-
-
+        <TextView
+            android:id="@+id/textview_eluate"
+            android:layout_width="match_parent"
+            android:layout_height="19dp"
+            android:layout_marginTop="2dp"
+            android:gravity="left"
+            android:layout_marginLeft="2dp"
+            android:text="Đánh giá chuyên môn:"
+            android:textColor="#3DABD0"
+            android:textSize="15sp" />
+        <EditText
+            android:id="@+id/textview_info4"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginTop="9dp"
+            android:background="@drawable/border_radius3"
+            android:hint="TopFactors"
+            android:textColor="#000"
+            android:textSize="15sp"
+            />
+        <TextView
+            android:id="@+id/textview_eluate"
+            android:layout_width="match_parent"
+            android:layout_height="19dp"
+            android:layout_marginTop="2dp"
+            android:gravity="left"
+            android:layout_marginLeft="2dp"
+            android:text="Đánh giá chuyên môn:"
+            android:textColor="#3DABD0"
+            android:textSize="15sp" />
+        <EditText
+            android:id="@+id/textview_info4"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginTop="9dp"
+            android:background="@drawable/border_radius3"
+            android:hint="TopFactors"
+            android:textColor="#000"
+            android:textSize="15sp"
+            />
+        <TextView
+            android:id="@+id/textview_eluate"
+            android:layout_width="match_parent"
+            android:layout_height="19dp"
+            android:layout_marginTop="2dp"
+            android:gravity="left"
+            android:layout_marginLeft="2dp"
+            android:text="Đánh giá chuyên môn:"
+            android:textColor="#3DABD0"
+            android:textSize="15sp" />
+        <EditText
+            android:id="@+id/textview_info4"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginTop="9dp"
+            android:background="@drawable/border_radius3"
+            android:hint="TopFactors"
+            android:textColor="#000"
+            android:textSize="15sp"
+            />
+        <TextView
+            android:id="@+id/textview_eluate"
+            android:layout_width="match_parent"
+            android:layout_height="19dp"
+            android:layout_marginTop="2dp"
+            android:gravity="left"
+            android:layout_marginLeft="2dp"
+            android:text="Đánh giá chuyên môn:"
+            android:textColor="#3DABD0"
+            android:textSize="15sp" />
+        <EditText
+            android:id="@+id/textview_info4"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginTop="9dp"
+            android:background="@drawable/border_radius3"
+            android:hint="TopFactors"
+            android:textColor="#000"
+            android:textSize="15sp"
+            />
 
 
 
     </LinearLayout>
+    </ScrollView>
 </LinearLayout>

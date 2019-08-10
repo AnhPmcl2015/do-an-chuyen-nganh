@@ -142,37 +142,37 @@ public class AppUtils {
 	 * @param request
 	 * @param file
 	 */
-	public void uploadFile(HttpServletRequest request, MultipartFile[] files) {
-		String uploadRootPath = request.getServletContext().getRealPath("upload");
-		logger.info("uploadRootPath = " + uploadRootPath);
-		
-		File uploadRootDir = new File(uploadRootPath);
-		
-		if(!uploadRootDir.exists()) {
-			uploadRootDir.mkdirs();
-		}
-
-		for(MultipartFile file : files) {
-			// Tên file gốc tại client
-			String name = file.getOriginalFilename();
-			
-			if(name != null && name.length() > 0) {
-				File serverFile = new File(uploadRootDir.getAbsolutePath() + File.separator + name);
-				
-				BufferedOutputStream stream;
-				try {
-					stream = new BufferedOutputStream(new FileOutputStream(serverFile));
-					stream.write(file.getBytes());
-					stream.close();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-
-				
-			}
-		}
-	}
+//	public void uploadFile(HttpServletRequest request, MultipartFile[] files) {
+//		String uploadRootPath = request.getServletContext().getRealPath("upload");
+//		logger.info("uploadRootPath = " + uploadRootPath);
+//		
+//		File uploadRootDir = new File(uploadRootPath);
+//		
+//		if(!uploadRootDir.exists()) {
+//			uploadRootDir.mkdirs();
+//		}
+//
+//		for(MultipartFile file : files) {
+//			// Tên file gốc tại client
+//			String name = file.getOriginalFilename();
+//			
+//			if(name != null && name.length() > 0) {
+//				File serverFile = new File(uploadRootDir.getAbsolutePath() + File.separator + name);
+//				
+//				BufferedOutputStream stream;
+//				try {
+//					stream = new BufferedOutputStream(new FileOutputStream(serverFile));
+//					stream.write(file.getBytes());
+//					stream.close();
+//				} catch (IOException e) {
+//					// TODO Auto-generated catch block
+//					e.printStackTrace();
+//				}
+//
+//				
+//			}
+//		}
+//	}
 	
 	
 	/**

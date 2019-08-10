@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.bytecode.use_reflection_optimizer">false</property>
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/topfactors</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="hibernate.search.autoregister_listeners">false</property>
+        <property name="hibernate.validator.apply_to_ddl">false</property>
+        <mapping class="jobcentral.dao.entity.test.Tag" />
+        <mapping class="jobcentral.dao.entity.test.CvTemplate" />
+        <mapping class="jobcentral.dao.entity.test.EvalutionDetail" />
+        <mapping class="jobcentral.dao.entity.test.AccountVerificationQueue" />
+        <mapping class="jobcentral.dao.entity.test.AppRole" />
+        <mapping class="jobcentral.dao.entity.test.CvEducation" />
+        <mapping class="jobcentral.dao.entity.test.Company" />
+        <mapping class="jobcentral.dao.entity.test.Assessor" />
+        <mapping class="jobcentral.dao.entity.test.RecruitmentPost" />
+        <mapping class="jobcentral.dao.entity.test.TypeOfBusiness" />
+        <mapping class="jobcentral.dao.entity.test.Nation" />
+        <mapping class="jobcentral.dao.entity.test.CvWorkExperience" />
+        <mapping class="jobcentral.dao.entity.test.Address" />
+        <mapping class="jobcentral.dao.entity.test.UserOtp" />
+        <mapping class="jobcentral.dao.entity.test.Cv" />
+        <mapping class="jobcentral.dao.entity.test.Experience" />
+        <mapping class="jobcentral.dao.entity.test.CvAchievement" />
+        <mapping class="jobcentral.dao.entity.test.Major" />
+        <mapping class="jobcentral.dao.entity.test.CvSkill" />
+        <mapping class="jobcentral.dao.entity.test.Skill" />
+        <mapping class="jobcentral.dao.entity.test.Identity" />
+        <mapping class="jobcentral.dao.entity.test.UserCategory" />
+        <mapping class="jobcentral.dao.entity.test.AppUser" />
+        <mapping class="jobcentral.dao.entity.test.Evalution" />
+        <mapping class="jobcentral.dao.entity.test.LoginHistory" />
+        <mapping class="jobcentral.dao.entity.test.SkillDetail" />
+    </session-factory>
+</hibernate-configuration>
