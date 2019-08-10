@@ -6,6 +6,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -14,6 +16,10 @@ import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -199,5 +205,35 @@ public class AppUtils {
 	 */
 	@Scheduled(cron = "0 0 0 * * ?")
 	public void setScheduleForConvertingIntoBlockChain() {
+	}
+	
+	/**
+	 * Dùng để crawl dữ liệu công việc từ các trang có công việc là IT
+	 * @param url
+	 */
+	public void crawlJobs(HashSet<String> links, String url) {
+		
+		if(!links.contains(url)) {
+			try {
+				links.add(url);
+				System.out.println(url);
+				Document document  = Jsoup.connect(url).get();
+				Elements elements = document.select("div.job_content");
+				
+				for (Element e: elements) {
+					ArrayList<String> temporary = new ArrayList<>();
+					temporary.add(e.outerHtml());
+					System.out.println(e.outerHtml());
+				}
+				
+			}catch(IOException e) {
+				logger.error("Crawler - ERROR for " + url + ": " + e.getMessage());
+			}
+		}
+	}
+	
+	public static void main(String[] args) {
+		HashSet<String> links = new HashSet<String>();
+		new AppUtils().crawlJobs(links, "https://itviec.com/it-jobs/ho-chi-minh-hcm");
 	}
 }
