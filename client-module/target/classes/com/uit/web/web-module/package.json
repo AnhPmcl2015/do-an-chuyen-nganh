@@ -18,7 +18,7 @@
         "react-websocket": "^2.0.1",
         "reactstrap": "^8.0.0",
         "redux": "^4.0.2",
-        "sockjs": "^0.3.19"
+        "sockjs": "^0.3.20"
     },
     "scripts": {
         "start": "react-scripts start",
